@@ -19,7 +19,7 @@
             <li>{{id}}.{{ names }}</li>
         </div>
         
-        <button @click="click1++">{{ click1 }}</button>
+        <button @click="plus">{{ count }}</button>
 
     </div>
 
@@ -30,9 +30,20 @@
                 let message = '這句代表message';
                 let hi = 'hi' + message;
                 let names = ["陳佑青", "A", "B"];
-                let click1=0;
+                let count=0;
                 return {
-                    message, hi, names,click1
+                    message, hi, names,count
+                }
+            },
+            methods:{
+                add(){
+                    this.count++
+                },
+                plus(){
+                    this.count++
+                    console.log(this.cont++)
+                    this.count*this.count;
+                    console.log(this.count,this.count,this.count*this.count)
                 }
             }
         }
