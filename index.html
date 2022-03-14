@@ -18,7 +18,7 @@
     </div>
 
     <script>
-        Vue.createApp({
+        const setting = {
             data() {
 
                 let message = '這句代表message';
@@ -27,7 +27,8 @@
                     message, hi
                 }
             }
-        }).mount('#app')
+        }
+        Vue.createApp(setting).mount('#app')
     </script>
 
 </body>
