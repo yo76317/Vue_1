@@ -12,20 +12,24 @@
 
     <script src="https://unpkg.com/vue@3"></script>
 
-    <div id="app">{{ message }}</div>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <h3>{{ hi }}</h3>
+    </div>
 
     <script>
         Vue.createApp({
             data() {
 
-                let message='這句代表message'
-                let hi='hi'+message;
+                let message = '這句代表message';
+                let hi = 'hi' + message;
                 return {
-                    message,hi
+                    message, hi
                 }
             }
         }).mount('#app')
     </script>
 
 </body>
+
 </html>
