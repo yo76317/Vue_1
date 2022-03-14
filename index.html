@@ -37,18 +37,17 @@
             },
             methods:{
                 add(){
-                    this.count++
+                    this.count=this.count+1;
                 },
                 plus(){
-                    this.count++
-                    console.log(this.cont++)
-                    this.count*this.count;
-                    console.log(this.count,this.count,this.count*this.count)
+                    this.count=(this.count+1)*(this.count+1);
+                    console.log(this.count);
+
                 }
             }
         }
         Vue.createApp(settings).mount('#app')
-        
+
     </script>
 
 </body>
