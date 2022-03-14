@@ -15,9 +15,12 @@
     <div id="app">
         <h1>{{ message }}</h1>
         <h3>{{ hi }}</h3>
-        <div v-for="names,id in names">{{id}}.{{ names }}</div>
+        <div v-for="names,id in names" :key="id">
+            <li v-if="id%2==0">{{id}}.{{ names }}</li>
+        </div>
+
     </div>
-    
+
     <script>
         const settings = {
             data() {
