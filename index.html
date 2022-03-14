@@ -15,15 +15,10 @@
     <div id="app">
         <h1>{{ message }}</h1>
         <h3>{{ hi }}</h3>
-        <div v-for="names in names">{{ names }}</div>
+        <div v-for="names,id in names">{{id}}.{{ names }}</div>
     </div>
-
-    <div id="list"></div>
-
-    <script src="./jquery-3.6.0.js"></script>
     
     <script>
-        
         const settings = {
             data() {
 
@@ -37,13 +32,6 @@
             }
         }
         Vue.createApp(settings).mount('#app')
-  
-        let names = ["陳佑青", "B", "A"];
-        let list = "";
-        names.forEach(name => {
-            $("#list").append(`<div>${name}</div>`)
-        })
-    
     </script>
 
 </body>
