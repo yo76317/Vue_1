@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue</title>
 </head>
+<style>
+    .bg1 {
+        background-color: aqua;
+    }
+
+    .bg2 {
+        background-color: rgb(102, 45, 235);
+    }
+</style>
 
 <body>
 
@@ -16,9 +25,9 @@
         <h1>{{ message }}</h1>
         <h3>{{ hi }}</h3>
         <div v-for="names,id in names" :key="id">
-            <li>{{id}}.{{ names }}</li>
+            <li :class="bg" @mouseover="changeBG" @mouseout="defaultBG">{{id}}.{{ names }}</li>
         </div>
-        
+
         <button @click="plus">{{ count }}</button>
 
     </div>
@@ -30,19 +39,25 @@
                 let message = '這句代表message';
                 let hi = 'hi' + message;
                 let names = ["陳佑青", "A", "B"];
-                let count=0;
+                let count = 0;
+                let bg = 'bg1';
                 return {
-                    message, hi, names,count
+                    message, hi, names, count, bg
                 }
             },
-            methods:{
-                add(){
-                    this.count=this.count+1;
+            methods: {
+                add() {
+                    this.count = this.count + 1;
                 },
-                plus(){
-                    this.count=(this.count+1)*(this.count+1);
+                plus() {
+                    this.count = (this.count + 1) * (this.count + 1);
                     console.log(this.count);
-
+                },
+                changeBG() {
+                    this.bg = 'bg1';
+                },
+                defaultBG() {
+                    this.bg = 'bg2';
                 }
             }
         }
