@@ -11,12 +11,17 @@
 <body>
 
     <script src="https://unpkg.com/vue@3"></script>
+
     <div id="app">{{ message }}</div>
+
     <script>
         Vue.createApp({
             data() {
+
+                let message='這句代表message'
+                let hi='hi'+message;
                 return {
-                    message: 'Hello Vue!'
+                    message,hi
                 }
             }
         }).mount('#app')
