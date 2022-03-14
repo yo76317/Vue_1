@@ -21,28 +21,60 @@
 
     <script src="https://unpkg.com/vue@3"></script>
 
+    <!-- 表單 -->
+    <div>
+        <label for="">
+            <div>我的名字:Jquery</div>
+    </div>
+    <input type="text" name="myname" id="myname" value="yochen">
+    </label>
+    <h1 id="text">yochen</h1>
+
+    <hr>
+
     <div id="app">
+        <div>
+            <label for="">
+                <div>我的名字:Vue</div>
+        </div>
+        <input type="text" name="myname" v-model="truename">
+        </label>
+        <h1>{{ truename }}</h1>
+        <hr>
+
+        <!-- 引用 -->
         <h1>{{ message }}</h1>
         <h3>{{ hi }}</h3>
+        <!-- 列表 -->
         <div v-for="names,id in names" :key="id">
             <li :class="bg" @mouseover="changeBG" @mouseout="defaultBG">{{id}}.{{ names }}</li>
         </div>
-
+        <!-- 按鈕 -->
         <button @click="plus">{{ count }}</button>
 
-    </div>
 
+    </div>
+    <script src="./jquery-3.6.0.js"></script>
     <script>
+        // 表單Jquery
+        $("#myname").on("input", () => {
+            let name = $('#myname').val()
+            $("#text").text(name)
+        })
+
+
         const settings = {
             data() {
 
                 let message = '這句代表message';
-                let hi = 'hi' + message;
+                let hi = message + '下面是列表';
                 let names = ["陳佑青", "A", "B"];
+
                 let count = 0;
                 let bg = 'bg1';
+                let truename = "預設值";
                 return {
-                    message, hi, names, count, bg
+                    message, hi, names, count, bg, truename
                 }
             },
             methods: {
@@ -62,6 +94,8 @@
             }
         }
         Vue.createApp(settings).mount('#app')
+
+
 
     </script>
 
