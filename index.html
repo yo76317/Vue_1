@@ -16,8 +16,10 @@
         <h1>{{ message }}</h1>
         <h3>{{ hi }}</h3>
         <div v-for="names,id in names" :key="id">
-            <li v-if="id%2==0">{{id}}.{{ names }}</li>
+            <li>{{id}}.{{ names }}</li>
         </div>
+        
+        <button @click="click1++">{{ click1 }}</button>
 
     </div>
 
@@ -28,9 +30,9 @@
                 let message = '這句代表message';
                 let hi = 'hi' + message;
                 let names = ["陳佑青", "A", "B"];
-
+                let click1=0;
                 return {
-                    message, hi, names
+                    message, hi, names,click1
                 }
             }
         }
