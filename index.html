@@ -17,6 +17,11 @@
         <h3>{{ hi }}</h3>
     </div>
 
+    <div id="app2">
+        <h1>{{ message }}</h1>
+        <h3>{{ hi }}</h3>
+    </div>
+
     <script>
         const setting = {
             data() {
@@ -29,6 +34,7 @@
             }
         }
         Vue.createApp(setting).mount('#app')
+        Vue.createApp(setting).mount('#app2')
     </script>
 
 </body>
