@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vue</title>
 </head>
 
 <body>
@@ -15,24 +15,35 @@
     <div id="app">
         <h1>{{ message }}</h1>
         <h3>{{ hi }}</h3>
-        <div>{{ name }}</div>
+        <div v-for="names in names">{{ names }}</div>
     </div>
 
+    <div id="list"></div>
+
+    <script src="./jquery-3.6.0.js"></script>
+    
     <script>
-        const setting = {
+        
+        const settings = {
             data() {
 
                 let message = '這句代表message';
                 let hi = 'hi' + message;
-                let name=["陳佑青","A","B"];
+                let names = ["陳佑青", "A", "B"];
 
                 return {
-                    message,hi,name
+                    message, hi, names
                 }
             }
         }
-        Vue.createApp(setting).mount('#app')
-
+        Vue.createApp(settings).mount('#app')
+  
+        let names = ["陳佑青", "B", "A"];
+        let list = "";
+        names.forEach(name => {
+            $("#list").append(`<div>${name}</div>`)
+        })
+    
     </script>
 
 </body>
