@@ -64,6 +64,7 @@
         <ul v-if="list.length>0">
             <li v-for="item,idx in list" :key="idx">
                 {{ item }}
+                <button @click="editItem(idx)">edit</button>
                 <button @click="delItem(idx)">X</button>
             </li>
         </ul>
@@ -97,32 +98,54 @@
                     message, hi, names, count1, bg, truename, list, todotext, count2
                 }
             },
+            mounted() {
+                if (localStorage.length > 0) {
+                    for (let i = 0; i < localStorage.length; i++) {
+                        this.list.push(localStorage.getItem(i));
+                    }
+                    this.count2 = localStorage.length
+                }
+            },
             methods: {
                 todo_list() {
-                    console.log("todo list enter")
+                    // console.log("todo list enter")
                     if (this.todotext.length > 0) {
                         this.list.push(this.todotext)
                         this.todotext = ''
                         this.count2 = this.list.length
+                        this.updateStorage()
                     }
                 },
                 delItem(idx) {
                     this.list.splice(idx, 1)
                     this.count2 = this.list.length
-                    },
-                    
-                    plus() {
-                        this.count1 = (this.count1 + 1) * (this.count1 + 1);
-                        console.log(this.count1);
-                    },
-                    changeBG() {
-                        this.bg = 'bg1';
-                    },
-                    defaultBG() {
-                        this.bg = 'bg2';
+                    this.updateStorage()
+                },
+                editItem(idx) {
+                    let text = prompt('描述', this.list[idx])
+                    if (text !== null && text.length > 0) {
+                        this.list[idx]=text
+                        this.updateStorage()
                     }
+                },
+                updateStorage() {
+                    localStorage.clear()
+                    for (let i = 0; i < this.list.length; i++) {
+                        localStorage.setItem(i, this.list[i])
+                    }
+                },
+                plus() {
+                    this.count1 = (this.count1 + 1) * (this.count1 + 1);
+                    console.log(this.count1);
+                },
+                changeBG() {
+                    this.bg = 'bg1';
+                },
+                defaultBG() {
+                    this.bg = 'bg2';
                 }
             }
+        }
         Vue.createApp(settings).mount('#app')
 
 
