@@ -51,8 +51,17 @@
         </div>
         <!-- 按鈕 -->
         <button @click="plus">{{ count }}</button>
-
-
+        <!-- TODO LIST -->
+        <h1>TODO LIST</h1>
+        <label for="todolabel">輸入待辦事項:</label>
+        <input type="text" v-model="context" id="todolavel" @keyup.enter="todo_list">
+        <hr>
+        <h3>待辦事項列表</h3>
+        <ul v-if="list.length>0">
+            <li v-for="item,idx in list" :key="idx">
+                {{ item }}
+            </li>
+        </ul>
     </div>
     <script src="./jquery-3.6.0.js"></script>
     <script>
@@ -73,13 +82,20 @@
                 let count = 0;
                 let bg = 'bg1';
                 let truename = "預設值";
+
+                let list=new Array();
+                let context="";
                 return {
-                    message, hi, names, count, bg, truename
+                    message, hi, names, count, bg, truename,list,context
                 }
             },
             methods: {
-                add() {
-                    this.count = this.count + 1;
+                todo_list() {
+                    console.log("enter")
+                    if(this.context.length>0){
+                        this.list.push(this.context)
+                        this.context=''
+                    }
                 },
                 plus() {
                     this.count = (this.count + 1) * (this.count + 1);
